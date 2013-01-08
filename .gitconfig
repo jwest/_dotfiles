@@ -1,0 +1,34 @@
+# base from: https://github.com/fragphace/dotfiles/blob/master/.gitconfig
+[ui]
+  color = true
+[color]
+  ui = true
+[push]
+  default = current
+[merge]
+  tool = vimdiff
+[alias]
+  # Shorthands
+  ci = commit
+  br = branch
+  co = checkout
+  st = status 
+  
+  # Lovely oneliners
+  bra = branch -avv
+  s = status -s .
+  a = add -v .
+  as = !git add . && git status -s
+  l = !git --no-pager lg -n 10 && echo ""
+  ch = commit -c HEAD
+  pp = !git pull && git push
+
+  # Relative diff with status (useful during resolving conflicts)
+  d = diff --name-status --relative
+  du = diff --name-only --relative --diff-filter=U
+
+  # Remove all deleted files
+  rmf = !git s --porcelain | grep 'D' --color=never | sed 's/ D //' | xargs git rm
+
+  # Sugar
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cr%Creset %Cblue%cn%Creset' --abbrev-commit --date=relative
