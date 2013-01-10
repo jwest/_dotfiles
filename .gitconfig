@@ -1,3 +1,4 @@
+# base from: https://github.com/fragphace/dotfiles/blob/master/.gitconfig
 [ui]
   color = true
 [color]
@@ -11,8 +12,8 @@
   ci = commit
   br = branch
   co = checkout
-  st = status 
-  
+  st = status
+
   # Lovely oneliners
   bra = branch -avv
   s = status -s .
