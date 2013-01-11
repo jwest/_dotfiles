@@ -13,5 +13,6 @@ alias home='cd ~/'
 alias web='cd /var/www'
 alias sub='sublime-text'
 
-alias pi="php ~/.projectIniter/init.php"
+alias backupWeb="sh ~/.scripts/backup"
+alias pi="php ~/.scripts/projectIniter/init.php"
 

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DATETIME=`date +%Y-%m-%e_%H-%M`
+USER=`whoami`
+HOME="/home/$USER"
+DEST="$HOME/.backups/$DATETIME"
+mkdir "$DEST"
+
+# backup mysql databases
+sudo mysqldump -u root -p --all-databases > $DEST/mysqlDump.sql
+
+# backup pages
+sudo tar -cf $DEST/apacheWebsites.tar /var/www/
+
+# backup all configs & others files from home
+sudo tar -cf $DEST/homeConfig.tar "$HOME/.config" $HOME/.bashrc $HOME/.bash_history $HOME/.codeintel $HOME/.kdb $HOME/.ssh $HOME/.filezilla $HOME/.kp
+
+# archive from temp
+sudo tar -zcf $DEST.tar $DEST
+
+rm -rf $DEST
