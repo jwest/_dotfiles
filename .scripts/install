@@ -2,7 +2,11 @@
 
 DIR=~/.dotfiles
 OLDDIR=~/.dotfiles_old
-FILES=".backups .bashrc .config .gitconfig .scripts"
+FILES=".bashrc .config .gitconfig .scripts .conkyrc"
+
+echo "Creating Backups dir"
+mkdir -p ~/.backups
+echo "...done"
 
 echo "Creating $OLDDIR for backup of any existing dotfiles in ~"
 mkdir -p $OLDDIR
