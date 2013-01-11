@@ -1,0 +1,24 @@
+#!/bin/bash
+
+DIR=~/.dotfiles
+OLDDIR=~/.dotfiles_old
+FILES=$DIR/*
+
+echo "Creating $OLDDIR for backup of any existing dotfiles in ~"
+mkdir -p $OLDDIR
+echo "...done"
+
+echo "Changing to the $DIR directory"
+cd $DIR
+echo "...done"
+
+for file in $FILES; do
+    if [ "${file}" == "$DIR/.git" ]
+    then
+        continue
+    fi
+    echo "Moving any existing dotfiles from ~ to $OLDDIR"
+    mv ~/.$file $OLDDIR/
+    echo "Creating symlink to $file in home directory."
+    ln -s $DIR/$file ~/test/.$file
+done
