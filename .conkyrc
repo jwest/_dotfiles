@@ -23,7 +23,7 @@ border_outer_margin 0
 
 alignment bl
 gap_x 50
-gap_y 50
+gap_y 10
 
 # Graphics settings #
 draw_shades no
@@ -36,13 +36,21 @@ use_xft yes
 xftalpha 0
 text_buffer_size 2048
 
+color1 fff
+color2 999
+color3 999
+
 uppercase no
 
 default_color FFFFFF
 
 
 TEXT
-${voffset 10}${font Ubuntu Light:size=40}${time %A}${font}${voffset -10}
+${color2}${font Clean:size=10}${if_match ${desktop}==1}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==2}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==3}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==4}${color1}${endif}•${color2}${offset 10}
+${color}${voffset 10}${font Ubuntu Light:size=40}${time %A}${font}${voffset -10}
 ${voffset 10}${font Ubuntu Light:size=40}${time %B} ${time %e}${font}${voffset -10}
-${voffset 10}${font Ubuntu Light:size=80}${time %I:%M %p}${font}${voffset 10}
-${font Ubuntu Light:size=10}CPU ${cpu cpu0}%, ${cpu cpu1}% ${if_existing /sys/devices/system/cpu/cpu2}, ${cpu cpu2}%${endif}${if_existing /sys/devices/system/cpu/cpu3}, ${cpu cpu3}%${endif} $alignr Mem $memperc%${font}
+${voffset 10}${font Ubuntu Light:size=80}${time %I:%M %p}${font}${voffset -8}
+
+${font Clean:size=7}${offset 5}${color3}CPU1 ${cpubar cpu1 3,95}
+${font Clean:size=7}${offset 5}${color3}CPU2 ${cpubar cpu2 3,95}${offset 107}${battery BAT1}
+${font Clean:size=7}${offset 5}${color #EAEAEA}CPU   ${cpubar 3,95}${offset 85}BAT ${battery_bar 3,95 BAT1}${offset 85}MEM ${membar 3,95}
