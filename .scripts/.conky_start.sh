@@ -1,2 +1,2 @@
 #!/bin/bash
-sleep 20 && conky;
+sleep 10 && conky;

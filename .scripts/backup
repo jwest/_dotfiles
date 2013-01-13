@@ -1,21 +1,64 @@
 #!/bin/sh
+USER=`whoami`
+
+if [ $2 ]
+then
+    USER=$2
+fi
 
 DATETIME=`date +%Y-%m-%e_%H-%M`
-USER=`whoami`
 HOME="/home/$USER"
 DEST="$HOME/.backups/$DATETIME"
-mkdir "$DEST"
 
-# backup mysql databases
-sudo mysqldump -u root -p --all-databases > $DEST/mysqlDump.sql
+case "$1" in
 
-# backup pages
-sudo tar -cf $DEST/apacheWebsites.tar /var/www/
+	'system')  echo "Backuping system"
 
-# backup all configs & others files from home
-sudo tar -cf $DEST/homeConfig.tar "$HOME/.config" $HOME/.bashrc $HOME/.bash_history $HOME/.codeintel $HOME/.kdb $HOME/.ssh $HOME/.filezilla $HOME/.kp
+		# backup system partition
+	    sudo tar cvpjf ${DEST}-system.tar.bz2 --exclude=/proc --exclude=/lost+found --exclude=/backup.tar.bz2 --exclude=/mnt --exclude=/sys /
+	    ;;
 
-# archive from temp
-sudo tar -zcf $DEST.tar $DEST
+	'restore')  echo  "Restoring system backup"
 
-rm -rf $DEST
+		if [ ! $2 ]
+		then
+		    echo "Filename given \"$2\" doesn't exist"
+		    exit
+		fi
+
+		if [ ! -e $2 ]
+		then
+		    echo "Filename given \"$2\" doesn't exist"
+		    exit
+		fi
+
+		# restore system partition
+	    sudo tar xvpfj ${2} -C /
+
+	    # create not beckuped dirs
+	    sudo mkdir proc
+		sudo mkdir lost+found
+		sudo mkdir mnt
+		sudo mkdir sys
+	    ;;
+
+	*) echo "Backuping web sites and config files"
+		
+		mkdir "$DEST"
+
+		# backup mysql databases
+		sudo mysqldump -u root -p --all-databases > $DEST/mysqlDump.sql
+
+		# backup pages
+		sudo tar -cf $DEST/apacheWebsites.tar /var/www/
+
+		# backup all configs & others files from home
+		sudo tar -cf $DEST/homeConfig.tar "$HOME/.config" $HOME/.bashrc $HOME/.bash_history $HOME/.codeintel $HOME/.kdb $HOME/.ssh $HOME/.filezilla $HOME/.kp
+
+		# archive from temp
+		sudo tar -zcf $DEST.tar $DEST
+
+		rm -rf $DEST
+	   ;;
+
+esac
