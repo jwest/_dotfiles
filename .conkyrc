@@ -23,7 +23,7 @@ border_outer_margin 0
 
 alignment bl
 gap_x 50
-gap_y 10
+gap_y 30
 
 # Graphics settings #
 draw_shades no
