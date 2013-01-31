@@ -15,3 +15,5 @@ alias sub='sublime-text'
 
 alias privbak="sh ~/.scripts/backup"
 alias pi="php ~/.scripts/projectIniter/init.php"
+alias phpunit='clear & phpunit --colors'
+

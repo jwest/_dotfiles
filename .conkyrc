@@ -49,7 +49,7 @@ TEXT
 ${color2}${font Clean:size=10}${if_match ${desktop}==1}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==2}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==3}${color1}${endif}•${color2}${offset 10}${if_match ${desktop}==4}${color1}${endif}•${color2}${offset 10}
 ${color}${voffset 10}${font Ubuntu Light:size=40}${time %A}${font}${voffset -10}
 ${voffset 10}${font Ubuntu Light:size=40}${time %B} ${time %e}${font}${voffset -10}
-${voffset 10}${font Ubuntu Light:size=80}${time %I:%M %p}${font}${voffset -8}
+${voffset 10}${font Ubuntu Light:size=80}${time %H:%M %p}${font}${voffset -8}
 
 ${font Clean:size=7}${offset 5}${color3}CPU1 ${cpubar cpu1 3,95}${offset 60}${battery BAT1}
 ${font Clean:size=7}${offset 5}${color3}CPU2 ${cpubar cpu2 3,95}${offset 35}BAT${offset 7}${battery_bar 3,95 BAT1}
