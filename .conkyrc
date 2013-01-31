@@ -51,6 +51,7 @@ ${color}${voffset 10}${font Ubuntu Light:size=40}${time %A}${font}${voffset -10}
 ${voffset 10}${font Ubuntu Light:size=40}${time %B} ${time %e}${font}${voffset -10}
 ${voffset 10}${font Ubuntu Light:size=80}${time %H:%M %p}${font}${voffset -8}
 
-${font Clean:size=7}${offset 5}${color3}CPU1 ${cpubar cpu1 3,95}${offset 60}${battery BAT1}
-${font Clean:size=7}${offset 5}${color3}CPU2 ${cpubar cpu2 3,95}${offset 35}BAT${offset 7}${battery_bar 3,95 BAT1}
-${font Clean:size=7}${offset 5}${color #EAEAEA}CPU   ${cpubar 3,95}${offset 35}MEM ${membar 3,95}
+${offset 30}${font Clean:size=7}${offset 5}${battery BAT1}${offset 14}${font Clean:size=7}${offset 5}${color3}CPU1 ${cpubar cpu1 3,95}${offset 35}
+${font Clean:size=7}${offset 5}${color #EAEAEA}BAT${offset 11}${battery_bar 3,95 BAT1}${font Clean:size=7}${offset 5}${color3}CPU2 ${cpubar cpu2 3,95}${offset 35}
+${font Clean:size=7}${offset 5}${color #EAEAEA}MEM${offset 7}${membar 3,95}${font Clean:size=7}${offset 5}${color3}CPU3 ${cpubar cpu3 3,95}${offset 35}
+${font Clean:size=7}${offset 5}${color #EAEAEA}CPU${offset 9}${cpubar 3,95}${font Clean:size=7}${offset 5}${color3}CPU4 ${cpubar cpu4 3,95}${offset 35}
